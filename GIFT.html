@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Gift For My Bestie 💖</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#fff0f5,#ffe4ec);
+  overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.container{
+  width:100%;
+  max-width:430px;
+  height:100vh;
+  margin:auto;
+  background:white;
+  overflow-y:auto;
+  position:relative;
+  box-shadow:0 0 30px rgba(0,0,0,.08);
+}
+
+/* OPENING */
+#opening{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,#fff,#ffe4ec);
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  transition:1s;
+}
+
+.paper{
+  width:100%;
+  max-width:400px;
+  text-align:center;
+  animation:fadeUp 1s ease;
+}
+
+.cute{
+  font-size:52px;
+  margin-bottom:20px;
+}
+
+.hello{
+  font-size:52px;
+  line-height:1.1;
+  color:#222;
+}
+
+.hello span{
+  color:#d81b60;
+  font-family:cursive;
+  animation:pulse 1.5s infinite;
+}
+
+.question{
+  margin-top:18px;
+  color:#666;
+  font-size:18px;
+}
+
+.btn-group{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:35px;
+  flex-wrap:wrap;
+}
+
+.yes,
+.no,
+.open-btn,
+.back{
+  border:none;
+  background:#d81b60;
+  color:white;
+  padding:14px 28px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+  font-size:15px;
+}
+
+.no{
+  background:white;
+  color:#d81b60;
+  border:2px solid #d81b60;
+}
+
+.yes:hover,
+.open-btn:hover,
+.back:hover{
+  transform:scale(1.05);
+}
+
+.no:hover{
+  background:#fff0f5;
+}
+
+#secondScreen{
+  display:none;
+}
+
+.promise{
+  color:#d81b60;
+  font-size:42px;
+  margin-bottom:25px;
+  font-family:cursive;
+}
+
+/* PAGE */
+.page{
+  display:none;
+  min-height:100vh;
+  padding:30px 20px 100px;
+  animation:fade .5s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+  100%{transform:scale(1);}
+}
+
+/* HOME */
+h1{
+  text-align:center;
+  color:#d81b60;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#777;
+  margin-bottom:35px;
+  font-size:15px;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.card{
+  height:145px;
+  border-radius:28px;
+  border:3px solid #d81b60;
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px) scale(1.03);
+  background:#fff0f5;
+}
+
+.emoji{
+  font-size:45px;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#d81b60;
+  font-weight:600;
+}
+
+/* CONTENT */
+.content{
+  margin-top:25px;
+  text-align:center;
+  color:#555;
+  line-height:1.9;
+  font-size:17px;
+}
+
+.back{
+  width:100%;
+  margin-top:30px;
+}
+
+/* VIDEO */
+.video-box{
+  margin-top:25px;
+}
+
+.video-box video{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius:25px;
+  border:5px solid #d81b60;
+  background:black;
+}
+
+/* HEARTS */
+.hearts{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:999;
+}
+
+.heart{
+  position:absolute;
+  color:#ff4d88;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  from{
+    transform:translateY(-10vh) rotate(0deg);
+    opacity:1;
+  }
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* FLOWERS PREMIUM */
+.flower-area{
+  position:relative;
+  width:100%;
+  height:430px;
+  border-radius:25px;
+  border:5px solid #d81b60;
+  background:linear-gradient(180deg,#fff0f5,#ffe4ec);
+  overflow:hidden;
+  margin-top:25px;
+  box-shadow:0 0 20px rgba(216,27,96,.25);
+}
+
+.flower{
+  position:absolute;
+  top:-60px;
+  font-size:30px;
+  animation:flowerFall linear forwards;
+  filter:drop-shadow(0 0 8px rgba(216,27,96,.4));
+}
+
+@keyframes flowerFall{
+  from{
+    transform:translateY(-10vh) rotate(0deg);
+    opacity:1;
+  }
+  to{
+    transform:translateY(120vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+.sparkle{
+  position:absolute;
+  top:-30px;
+  font-size:14px;
+  opacity:.9;
+  animation:sparkleFall linear forwards;
+}
+
+@keyframes sparkleFall{
+  from{
+    transform:translateY(-10vh) scale(1);
+    opacity:1;
+  }
+  to{
+    transform:translateY(120vh) scale(0.4);
+    opacity:0;
+  }
+}
+
+/* MOBILE */
+@media(max-width:480px){
+  .hello{font-size:42px;}
+  .promise{font-size:34px;}
+  .video-box video{height:360px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+<div id="opening">
+  <div class="paper">
+
+    <div id="firstScreen">
+      <div class="cute">૮ ˶ᵔ ᵕ ᵔ˶ ა</div>
+
+      <h1 class="hello">
+        Hello <br>
+        <span>Bestie!</span>
+      </h1>
+
+      <p class="question">
+        I made something special for you 💖
+      </p>
+
+      <div class="btn-group">
+        <button class="yes" onclick="nextOpening()">OPEN IT</button>
+        <button class="no" id="runaway">NOOO</button>
+      </div>
+    </div>
+
+    <div id="secondScreen">
+      <div class="cute">🥺</div>
+      <h1 class="promise">Promise you'll like it</h1>
+      <button class="open-btn" onclick="startWebsite()">OPEN GIFT</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- HEARTS -->
+<div class="hearts"></div>
+
+<div class="container">
+
+  <!-- HOME -->
+  <div class="page active" id="home">
+    <h1>THIS IS FOR YOU 💖</h1>
+
+    <p class="subtitle">
+      Thank you for being the best person ever ❤
+    </p>
+
+    <div class="menu">
+
+      <div class="card" onclick="openPage('photo')">
+        <div class="emoji">🎥</div>
+        <p>Memories</p>
+      </div>
+
+      <div class="card" onclick="openPage('flower')">
+        <div class="emoji">🌷</div>
+        <p>Flowers</p>
+      </div>
+
+      <div class="card" onclick="openPage('music')">
+        <div class="emoji">🎵</div>
+        <p>Bestie Song</p>
+      </div>
+
+      <div class="card" onclick="openPage('letter')">
+        <div class="emoji">💌</div>
+        <p>Letter</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MEMORIES -->
+  <div class="page" id="photo">
+    <h1>Our Memories 🎥</h1>
+
+    <div class="video-box">
+      <video controls playsinline webkit-playsinline>
+        <source src="memories.mp4.mp4" type="video/mp4">
+        Browser kamu tidak support video.
+      </video>
+    </div>
+
+    <div class="content">
+      All of these memories will always be my favorite ❤
+    </div>
+
+    <button class="back" onclick="goHome()">Back</button>
+  </div>
+
+  <!-- FLOWERS PREMIUM -->
+  <div class="page" id="flower">
+    <h1>Pretty Tulips 🌷</h1>
+
+    <p class="subtitle">
+      Flowers just for you 💖
+    </p>
+
+    <div class="flower-area">
+      <div class="sparkle-area"></div>
+    </div>
+
+    <div class="content">
+      You are like a flower that makes the day more beautiful 🌷💖🌷💖
+    </div>
+
+    <button class="back" onclick="goHome()">Back</button>
+  </div>
+
+  <!-- MUSIC -->
+  <div class="page" id="music">
+    <h1>For My Best Friend 🎵</h1>
+
+    <div class="video-box">
+      <video controls playsinline webkit-playsinline>
+        <source src="song.mp4.mp4" type="video/mp4">
+        Browser kamu tidak support video.
+      </video>
+    </div>
+
+    <p class="music-quote">
+      "A friendship like ours is rare and precious."
+    </p>
+
+    <div class="content">
+       ❤
+    </div>
+
+    <button class="back" onclick="goHome()">Back</button>
+  </div>
+
+  <!-- LETTER -->
+  <div class="page" id="letter">
+    <h1>Little Letter 💌</h1>
+
+    <div class="content">
+      Thank you for being present in my life. <br><br>
+      I hope we continue to be the best friends, keep making funny memories,
+      and always be there for each other ❤
+    </div>
+
+    <button class="back" onclick="goHome()">Back</button>
+  </div>
+
+</div>
+
+<script>
+/* OPENING */
+function nextOpening(){
+  document.getElementById("firstScreen").style.display="none";
+  document.getElementById("secondScreen").style.display="block";
+}
+
+function startWebsite(){
+  const opening = document.getElementById("opening");
+  opening.style.opacity = "0";
+
+  setTimeout(()=>{
+    opening.style.display = "none";
+  },1000);
+}
+
+/* RUNAWAY BUTTON */
+const noBtn = document.getElementById("runaway");
+
+noBtn.addEventListener("mouseover",()=>{
+  const x=Math.random()*120-60;
+  const y=Math.random()*120-60;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
+});
+
+/* PAGE */
+function openPage(id){
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+}
+
+function goHome(){
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  document.getElementById("home").classList.add("active");
+}
+
+/* HEARTS */
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML="❤";
+
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*20+15)+"px";
+  heart.style.animationDuration=(Math.random()*3+3)+"s";
+
+  document.querySelector(".hearts").appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },6000);
+}
+
+setInterval(createHeart,300);
+
+/* FLOWERS PREMIUM */
+function createFlower(){
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+
+  const flowers = ["🌷","🌸","🌹","💐","🌺","🌻"];
+  flower.innerHTML = flowers[Math.floor(Math.random()*flowers.length)];
+
+  flower.style.left = Math.random()*100 + "%";
+  flower.style.fontSize = (Math.random()*25 + 20) + "px";
+  flower.style.animationDuration = (Math.random()*3 + 4) + "s";
+
+  document.querySelector(".flower-area").appendChild(flower);
+
+  setTimeout(()=>{
+    flower.remove();
+  },8000);
+}
+
+function createSparkle(){
+  const sparkle = document.createElement("div");
+  sparkle.classList.add("sparkle");
+
+  const sparkles = ["✨","⭐","💖","💫"];
+  sparkle.innerHTML = sparkles[Math.floor(Math.random()*sparkles.length)];
+
+  sparkle.style.left = Math.random()*100 + "%";
+  sparkle.style.fontSize = (Math.random()*10 + 10) + "px";
+  sparkle.style.animationDuration = (Math.random()*2 + 3) + "s";
+
+  document.querySelector(".sparkle-area").appendChild(sparkle);
+
+  setTimeout(()=>{
+    sparkle.remove();
+  },6000);
+}
+
+setInterval(()=>{
+  const flowerPage = document.getElementById("flower");
+  if(flowerPage.classList.contains("active")){
+    createFlower();
+    createSparkle();
+  }
+},250);
+</script>
+
+</body>
+</html>
